@@ -1,0 +1,154 @@
+/*Students*/
+
+.students-container {
+    width: 885px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.studentsList {
+    display: inline-block;
+    font-size: 24px;
+    vertical-align: top;
+    margin-top: 0;
+    list-style-type: none;
+    margin-right: 45px;
+    position: relative;
+    
+}
+.studentsList li:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+.info {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 24px;
+    background-color: #eee;
+    position: relative;
+}
+.btn {
+    display: block;
+    padding: 5px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: blue;
+}
+.btn:active {
+    position: relative;
+    top: 1px;
+}
+input[type="text"] {
+    width: 150px;
+    font-size: 14px;
+}
+.delBtn {
+    position: absolute;
+
+    margin-top: 5px;
+    left: 0px;
+    margin-left: 20px;
+
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    border-radius: 100%;
+    transition: all .6s;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    
+}
+.delBtn::before {
+    display: block;
+    position: absolute;
+    top: 47%;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: red;
+}
+.delBtn::after {
+    display: block;
+    position: absolute;
+    content: '';
+    left: 47%;
+    width: 2px;
+    height: 100%;
+    background-color: red;
+}
+.delBtn:hover {
+    background-color: black;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    
+}
+
+.info p {
+    padding: 0;
+    margin: 0;
+}
+
+/*Palette*/
+
+.container {
+    width: 885px;
+    margin: 0 auto;
+    background-color: lightblue;
+    padding: 10px;
+}
+.square {
+    display: inline-block;
+    vertical-align: top;
+    width: 270px;
+    height: 270px;
+    border: 1px solid #000;
+    margin-right: 30px;
+}
+.square:last-child {
+    margin-right: 0;
+}
+.btn-color {
+    display: block;
+    width: 100%;
+    height: 33%;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+.btn-color:first-child {
+    margin-top: .5%;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.blue {
+    background-color: blue;
+}
+.black {
+    background-color: black;
+}
+.statistics {
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.statistics h2 {
+    text-align: center;
+    
+}
+.statistics p {
+    font-size: 24px;
+    line-height: 1.2;
+}
+.square div {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

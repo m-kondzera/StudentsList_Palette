@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>List of students</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <script src="libs/PubSub.js"></script>
+        <script src="libs/mediator.js"></script>
+        <script src="libs/request.js"></script>
+
+        <!-- Palette -->
+        <script src="app/palette/templetes/statisticsTpl.js"></script>
+
+        <script src="app/palette/models/ColorsCollection.js"></script>
+        <script src="app/palette/models/Color.js"></script>
+
+        <script src="app/palette/views/OneButtonView.js"></script>
+        <script src="app/palette/views/PaletteView.js"></script>
+        <script src="app/palette/views/FilledView.js"></script>
+        <script src="app/palette/views/OneStatisticView.js"></script>
+        <script src="app/palette/views/StatisticsView.js"></script>
+
+        <script src="app/palette/PaletteController.js"></script>
+
+        <!-- Students -->
+        <script src="app/studentsList/templetes/oneStudentTpl.js"></script>
+        <script src="app/studentsList/templetes/addInfoTpl.js"></script>
+
+        <script src="app/studentsList/models/StudentsCollection.js"></script>
+        <script src="app/studentsList/models/Student.js"></script>
+
+        <script src="app/studentsList/views/OneStudentView.js"></script>
+        <script src="app/studentsList/views/StudentsListView.js"></script>
+        <script src="app/studentsList/views/AddInfoView.js"></script>
+        
+        <script src="app/studentsList/StudentsListController.js"></script>
+
+        <!-- main -->
+        <script src="app/main.js"></script>
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="square colors"></div>
+            <div class="square colored"></div>
+            <div class="square statistics"></div>
+        </div>
+        <div class="students-container">
+            <ul class="studentsList"></ul>
+            <div class="info"></div>
+        </div>
+    </body>
+</html>

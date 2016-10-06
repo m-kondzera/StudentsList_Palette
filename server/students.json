@@ -1,0 +1,38 @@
+[
+    {
+        "lastName": "Volyk",
+        "name": "Anton", 
+        "gender": "male", 
+        "skype": "tohavolik"
+    },
+    {
+        "lastName": "Kopylov",
+        "name": "Serhii", 
+        "gender": "male", 
+        "skype": "live:db7bcd884d24eaba"
+    },
+    {
+        "lastName": "Husar", 
+        "name": "Liudmyla", 
+        "gender": "female", 
+        "skype": "blerwoldorf"
+    },
+    {
+        "lastName": "Kopylenko",
+        "name": "Lina", 
+        "gender": "female", 
+        "skype": "lina7inlove"
+    },
+    {
+        "name": "Kondzera", 
+        "lastName": "Maxim", 
+        "gender": "male", 
+        "skype": "makc___94"
+    },
+    {
+        "name": "Kliuchyk", 
+        "lastName": "Evgeny", 
+        "gender": "male", 
+        "skype": "voitishek"
+    }
+]
