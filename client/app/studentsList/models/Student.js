@@ -9,8 +9,8 @@ function Student (_lastName, _name, _gender, _skype) {
         observer.sub(event, fn);
     };
 
-    this.deleted = function () {
-        observer.pub('student removed', this);
+    this.emit = function (event, el) {
+        observer.pub('student removed', el);
     };
 
 	this.getName = function () {

@@ -3,9 +3,7 @@ function StudentsListView (studentsCollection) {
         var fragment = document.createDocumentFragment(),
             oneStudent;
 
-        studentsCollection.forEach(function (student) {
-            student.on('student removed', removeStudent);
-            
+        studentsCollection.forEach(function (student) {;
             oneStudent = new OneStudentView(student);
 
             fragment.appendChild(oneStudent.render());
@@ -13,8 +11,4 @@ function StudentsListView (studentsCollection) {
 
         return fragment;
     };
-
-	function removeStudent (student) {
-		studentsCollection.remove(student);
-	}
 }

@@ -2,8 +2,12 @@ function StudentsCollection () {
     var students = [],
         observer = new PubSub(),
         initStudents = function (response) {
+            var newStudent;
+
             response.forEach(function (obj) {
-                students.push(new Student(obj.lastName, obj.name, obj.gender, obj.skype));
+                newStudent = new Student(obj.lastName, obj.name, obj.gender, obj.skype);
+                newStudent.on('student removed', remove);
+                students.push(newStudent);
             });
             
             observer.pub('inited');
@@ -21,7 +25,7 @@ function StudentsCollection () {
         students.forEach(iterator);
     };
 
-    this.remove = function (student) {
+    function remove (student) {
         students.splice(students.indexOf(student), 1);
-    };
+    }
 }
