@@ -1,5 +1,5 @@
 var Student = (function () {
-    function Constructor () {
+    function Student () {
         var observer = new PubSub(),
             attributes = {};
 
@@ -33,11 +33,11 @@ var Student = (function () {
         };
     }
 
-    Constructor.prototype.isAllowedValue = _isAllowedValue;
+    Student.prototype.isAllowedValue = _isAllowedValue;
 
     function _isAllowedValue (value) {
         return (typeof value === 'string') ? true : false;
     }
 
-    return Constructor;
+    return Student;
 })();
