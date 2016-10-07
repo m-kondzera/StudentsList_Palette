@@ -1,53 +1,43 @@
-function Student (_lastName, _name, _gender, _skype) {
-    var observer = new PubSub(),
-        lastName = _lastName,
-        name = _name,
-        gender = _gender,
-        skype = _skype;
+var Student = (function () {
+    function Constructor () {
+        var observer = new PubSub(),
+            attributes = {};
 
-    this.on = function (event, fn) {
-        observer.sub(event, fn);
-    };
-
-    this.emit = function (event, el) {
-        observer.pub('student removed', el);
-    };
-
-	this.getName = function () {
-        return name;
-    };
-    this.setName = function (value) {
-        name = value;
-        observer.pub('student changed');
-    };
-
-    this.getLastName = function () {
-        return lastName;
-    };
-    this.setLastName = function (value) {
-        lastName = value;
-    };    
-
-    this.getGender = function () {
-        return gender;
-    };
-    this.setGender = function (value) {
-        gender = value;
-    };
-
-    this.getSkype = function () {
-        return skype;
-    };
-    this.setSkype = function (value) {
-        skype = value;
-    };
-
-    this.toJSON = function () {
-        return {
-            lastName: this.getLastName(),
-            name: this.getName(),
-            gender: this.getGender(),
-            skype: this.getSkype()
+        this.on = function (event, fn) {
+            observer.sub(event, fn);
         };
-    };
-}
+
+        this.emit = function (event, el) {
+            observer.pub(event, el);
+        };
+
+        this.set = function (key, value) {
+            if (this.isAllowedValue(value)) {
+                attributes[key] = value;
+            } else {
+                console.log('Input valid value');
+            }
+        };
+
+        this.get = function (key) {
+            return attributes[key];
+        };
+
+        this.toJSON = function () {
+            return {
+                lastName: this.get('lastName'),
+                name: this.get('name'),
+                gender: this.get('gender'),
+                skype: this.get('skype')
+            };
+        };
+    }
+
+    Constructor.prototype.isAllowedValue = _isAllowedValue;
+
+    function _isAllowedValue (value) {
+        return (typeof value === 'string') ? true : false;
+    }
+
+    return Constructor;
+})();

@@ -2,12 +2,18 @@ function StudentsCollection () {
     var students = [],
         observer = new PubSub(),
         initStudents = function (response) {
-            var newStudent;
+            var student;
 
             response.forEach(function (obj) {
-                newStudent = new Student(obj.lastName, obj.name, obj.gender, obj.skype);
-                newStudent.on('student removed', remove);
-                students.push(newStudent);
+                student = new Student();
+                
+                student.set('lastName', obj.lastName);
+                student.set('name', obj.name);
+                student.set('gender', obj.gender);
+                student.set('skype', obj.skype);
+
+                student.on('student removed', remove);
+                students.push(student);
             });
             
             observer.pub('inited');

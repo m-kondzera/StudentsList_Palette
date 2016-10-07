@@ -49,12 +49,13 @@ function AddInfoView () {
             newGender = document.getElementsByName('gender')[0];
             newSkype = document.getElementsByName('skype')[0];
 
-            student.setLastName(newLastName.value);
-            student.setName(newName.value);
-            student.setGender(newGender.value);
-            student.setSkype(newSkype.value);
+            student.set('lastName', newLastName.value);
+            student.set('name', newName.value);
+            student.set('gender', newGender.value);
+            student.set('skype', newSkype.value);
 
             addInfo();
+            student.emit('student changed');
         }
     }
 }

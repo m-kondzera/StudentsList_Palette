@@ -2,8 +2,8 @@ function OneButtonView (color) {
     var el = document.createElement('button');
 
     this.render = function () {
-        el.classList.add('btn-color', color.getColor());
-        el.innerHTML = color.getColor().toUpperCase();
+        el.classList.add('btn-color', color.get('color'));
+        el.innerHTML = color.get('color').toUpperCase();
 
         el.addEventListener('click', postColor, false);
 
@@ -11,7 +11,7 @@ function OneButtonView (color) {
     };
 
 	function postColor () {
-		mediator.pub('color selected', color.getColor());
+		mediator.pub('color selected', color.get('color'));
 
         color.increaseCounter();
 	}
