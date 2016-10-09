@@ -2,16 +2,13 @@
     {
         "color": "red",
         "counter": "0"
-        
     },
     {
         "color": "green",
         "counter": "0"
-        
     },
     {
         "color": "blue", 
         "counter": "0"
-        
     }
 ]

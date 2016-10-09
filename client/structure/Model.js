@@ -44,11 +44,11 @@ var Model = (function () {
 
     function _on (event, fn) {
         this.observer.sub(event, fn);
-    };
+    }
 
     function _emit (event, el) {
         this.observer.pub(event, el);
-    };
+    }
 
     return Constructor;
 })();
