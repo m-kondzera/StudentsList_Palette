@@ -1,19 +1,32 @@
 function ColorsCollection () {
-    var colors = initColors();
+    var container = [],
+        observer = new PubSub(),
+        initColors = function (response) {
+            var color;
 
-    this.forEach = function (iterator) {
-        colors.forEach(iterator);
+            response.forEach(function (obj) {
+                color = new Color();
+
+                for (var key in obj) {
+                    color.set(key, obj[key]);
+                }
+
+                container.push(color);
+            });
+            
+            observer.pub('inited');
+        };
+
+    this.on = function (event, fn) {
+        observer.sub(event, fn);
     };
 
-    function initColors () {
-        var red = new Color(),
-            green = new Color(),
-            blue = new Color();
+    this.init = function () {
+        request.load('colors', initColors);
+    };
 
-        red.set('color', 'red');
-        green.set('color', 'green');
-        blue.set('color', 'blue');
+    this.forEach = function (iterator) {
+        container.forEach(iterator);
+    };
 
-        return [red, green, blue];
-    } 
 }

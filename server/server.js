@@ -8,8 +8,12 @@ function onRequest (request, response) {
 
     if (pathname === '/') {
         pathname = '/index.html';
-    } if (pathname === '/getStudents') {
+    }
+    if (pathname === '/getStudents') {
         pathname = '/../server/students.json';
+    }
+    if (pathname === '/getColors') {
+        pathname = '/../server/colors.json';
     }
 
     if (pathname.indexOf('.css') != -1 || pathname.indexOf('.js') != -1 

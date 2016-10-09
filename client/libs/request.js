@@ -1,6 +1,7 @@
 var request = (function () {
     var routes = {
-        'students': '/getStudents'
+        'students': '/getStudents',
+        'colors': '/getColors'
     };
 
     function _load (name, callback) {

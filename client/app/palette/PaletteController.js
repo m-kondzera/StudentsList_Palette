@@ -3,11 +3,18 @@ function PaletteController () {
 		filled = document.getElementsByClassName('colored')[0],
 		statistics = document.getElementsByClassName('statistics')[0],
         colorsCollection = new ColorsCollection(),
-        paletteView = new PaletteView(colorsCollection),
-		filledView = new FilledView(),
-		statisticsView = new StatisticsView(colorsCollection);
+		filledView = new FilledView();
 		
-	paletteList.appendChild(paletteView.render());
+    colorsCollection.on('inited', createList);
+    colorsCollection.init();
+
     filled.appendChild(filledView.render());
-    statistics.appendChild(statisticsView.render());
+
+    function createList () {
+        paletteView = new PaletteView(colorsCollection);
+        statisticsView = new StatisticsView(colorsCollection);
+
+        paletteList.appendChild(paletteView.render());
+        statistics.appendChild(statisticsView.render());
+    }
 }

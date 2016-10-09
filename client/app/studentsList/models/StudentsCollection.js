@@ -1,19 +1,18 @@
 function StudentsCollection () {
-    var students = [],
+    var container = [],
         observer = new PubSub(),
         initStudents = function (response) {
             var student;
 
             response.forEach(function (obj) {
                 student = new Student();
-                
-                student.set('lastName', obj.lastName);
-                student.set('name', obj.name);
-                student.set('gender', obj.gender);
-                student.set('skype', obj.skype);
+
+                for (var key in obj) {
+                    student.set(key, obj[key]);
+                }
 
                 student.on('student removed', remove);
-                students.push(student);
+                container.push(student);
             });
             
             observer.pub('inited');
@@ -28,10 +27,10 @@ function StudentsCollection () {
     };
 
     this.forEach = function (iterator) {
-        students.forEach(iterator);
+        container.forEach(iterator);
     };
 
     function remove (student) {
-        students.splice(students.indexOf(student), 1);
+        container.splice(container.indexOf(student), 1);
     }
 }
