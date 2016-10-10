@@ -1,17 +1,17 @@
 function StudentsListController () {
     var studentsList = document.getElementsByClassName('studentsList')[0],
         info = document.getElementsByClassName('info')[0],
-        studentsCollection = new StudentsCollection(),
+        studentsContainer = new StudentsContainer(),
         addInfoView = new AddInfoView(),
         studentsListView;
 
-    studentsCollection.on('inited', createList);
-    studentsCollection.init();
+    studentsContainer.on('inited', createList);
+    studentsContainer.init();
 
     info.appendChild(addInfoView.render());
 
     function createList () {
-        studentsListView = new StudentsListView(studentsCollection);
+        studentsListView = new StudentsListView(studentsContainer);
         studentsList.appendChild(studentsListView.render());
     }
 
