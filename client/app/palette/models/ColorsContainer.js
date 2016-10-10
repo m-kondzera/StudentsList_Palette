@@ -5,7 +5,7 @@ var ColorsContainer = (function (Parent) {
         Parent.call(this);
 
         var colors = this.getCollection(),
-            initColors = (function (response) {
+            initColors = function (response) {
                 var color;
 
                 response.forEach(function (obj) {
@@ -19,10 +19,10 @@ var ColorsContainer = (function (Parent) {
                 });
                 
                 this.pub('inited');
-            }).bind(this);
+            };
 
         this.init = function () {
-            request.load('colors', initColors);
+            request.load('colors', initColors.bind(this));
         };
     }
 
