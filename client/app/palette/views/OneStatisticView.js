@@ -1,7 +1,7 @@
 function OneStatisticsView (color) {
     var el = document.createElement('p');
 
-    color.on('statistics request', refreshStatistics);
+    color.on('change:counter', refreshStatistics);
 
     this.render = function () {
         refreshStatistics();

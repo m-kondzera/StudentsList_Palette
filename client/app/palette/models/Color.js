@@ -4,7 +4,5 @@ var Color = Backbone.Model.extend({
 
         counter++;
         this.set('counter', counter.toString());
-
-        this.trigger('statistics request');
     }
 });
