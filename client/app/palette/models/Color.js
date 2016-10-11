@@ -1,18 +1,10 @@
-var Color = (function (Parent) {
-    extend(Constructor, Parent);
+var Color = Backbone.Model.extend({
+    increaseCounter: function () {
+        var counter = this.get('counter');
 
-    function Constructor () {
-        Parent.apply(this);
+        counter++;
+        this.set('counter', counter.toString());
 
-        this.increaseCounter = function () {
-            var counter = this.get('counter');
-
-            counter++;
-            this.set('counter', counter.toString());
-
-            this.emit('statistics request');
-        };
+        this.trigger('statistics request');
     }
-
-    return Constructor;
-})(Model);
+});

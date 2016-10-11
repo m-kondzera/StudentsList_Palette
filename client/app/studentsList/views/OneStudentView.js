@@ -24,7 +24,7 @@ function OneStudentView (student) {
         e.stopPropagation();
 
         el.remove();
-        student.emit('student removed', student);
+        student.trigger('student removed', student);
 
         mediator.pub('student clicked', 'delete');
     }

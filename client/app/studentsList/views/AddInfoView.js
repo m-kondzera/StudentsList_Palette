@@ -55,7 +55,7 @@ function AddInfoView () {
             student.set('skype', newSkype.value);
 
             addInfo();
-            student.emit('student changed');
+            student.trigger('student changed');
         }
     }
 }
