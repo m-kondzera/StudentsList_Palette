@@ -7,7 +7,7 @@ var Container = (function () {
             observer.sub(event, fn);
         };
 
-        this.pub = function (event) {
+        this.emit = function (event) {
             observer.pub(event);
         };
 

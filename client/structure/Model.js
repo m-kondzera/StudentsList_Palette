@@ -1,8 +1,7 @@
 var Model = (function () {
     function Constructor () {
-        var attributes = {};
-
-        this.observer = new PubSub();
+        var attributes = {},
+            observer = new PubSub();
 
         this.get = function (key) {
             if (this.isAllowedKey(attributes, key)) {
@@ -27,12 +26,18 @@ var Model = (function () {
 
             return obj;
         };
+
+        this.on = function (event, fn) {
+            observer.sub(event, fn);
+        };
+
+        this.emit = function (event, el) {
+            observer.pub(event, el);
+        }
     }
 
     Constructor.prototype.isAllowedValue = _isAllowedValue;
     Constructor.prototype.isAllowedKey = _isAllowedKey;
-    Constructor.prototype.on = _on;
-    Constructor.prototype.emit = _emit;
 
     function _isAllowedValue (value) {
         return (typeof value === 'string') ? true : false;
@@ -40,14 +45,6 @@ var Model = (function () {
 
     function _isAllowedKey (obj, key) {
         return obj[key] ? true : false;
-    }
-
-    function _on (event, fn) {
-        this.observer.sub(event, fn);
-    }
-
-    function _emit (event, el) {
-        this.observer.pub(event, el);
     }
 
     return Constructor;

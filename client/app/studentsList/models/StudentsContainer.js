@@ -5,7 +5,7 @@ var StudentsContainer = (function (Parent) {
         Parent.call(this);
 
         var students = this.getCollection(),
-            initStudents = function (response) {
+            initStudents = (function (response) {
                 var student;
 
                 response.forEach(function (obj) {
@@ -19,11 +19,11 @@ var StudentsContainer = (function (Parent) {
                     students.push(student);
                 });
 
-                this.pub('inited');
-            };
+                this.emit('inited');
+            }).bind(this);
 
         this.init = function () {
-            request.load('students', initStudents.bind(this));
+            request.load('students', initStudents);
         };
 
         function remove (student) {

@@ -10,7 +10,7 @@ var Color = (function (Parent) {
             counter++;
             this.set('counter', counter.toString());
 
-            this.observer.pub('statistics request');
+            this.emit('statistics request');
         };
     }
 
