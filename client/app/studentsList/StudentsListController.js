@@ -6,7 +6,6 @@ function StudentsListController () {
         studentsListView;
 
     studentsContainer.on('inited', createList);
-    studentsContainer.init();
 
     info.appendChild(addInfoView.render());
 

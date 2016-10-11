@@ -6,7 +6,6 @@ function PaletteController () {
 		filledView = new FilledView();
 		
     colorsContainer.on('inited', createList);
-    colorsContainer.init();
 
     filled.appendChild(filledView.render());
 
