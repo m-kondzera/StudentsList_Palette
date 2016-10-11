@@ -1,7 +1,7 @@
 function OneStudentView (student) {
     var el = document.createElement('li');
 
-    student.on('student changed', fillElement);
+    student.on('change', fillElement);
 
     this.render = function () {
         fillElement();
