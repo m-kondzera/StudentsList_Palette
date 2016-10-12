@@ -5,13 +5,7 @@ function StudentsListController () {
         addInfoView = new AddInfoView(),
         studentsListView;
 
-    studentsContainer.on('inited', createList);
-
+    studentsListView = new StudentsListView({collection: studentsContainer});
+    studentsList.appendChild(studentsListView.render().el);
     info.appendChild(addInfoView.render());
-
-    function createList () {
-        studentsListView = new StudentsListView(studentsContainer);
-        studentsList.appendChild(studentsListView.render());
-    }
-
 }

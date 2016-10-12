@@ -7,6 +7,5 @@ var StudentsContainer = Backbone.Collection.extend({
 
     initStudents: function (response) {
         this.add(response);
-        this.trigger('inited');
     }
 });

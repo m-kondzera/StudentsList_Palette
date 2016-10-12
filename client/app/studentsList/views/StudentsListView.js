@@ -1,14 +1,17 @@
-function StudentsListView (studentsCollection) {
-    this.render = function () {
-        var fragment = document.createDocumentFragment(),
-            oneStudent;
+var StudentsListView = Backbone.View.extend({
+    initialize: function () {
+        this.collection.on('add', this.addStudents, this);
+    },
 
-        studentsCollection.forEach(function (student) {;
-            oneStudent = new OneStudentView({model: student});
+    render: function () {
+        this.collection.forEach(this.addStudents, this);
 
-            fragment.appendChild(oneStudent.render().el);
-        });
+        return this;
+    },
 
-        return fragment;
-    };
-}
+    addStudents: function (student) {
+        oneStudent = new OneStudentView({model: student});
+
+        this.el.appendChild(oneStudent.render().el);
+    }
+});
