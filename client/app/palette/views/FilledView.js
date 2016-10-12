@@ -1,13 +1,15 @@
-function FilledView () {
-    var el = document.createElement('div');
+var FilledView = Backbone.View.extend({
+    tagName: 'div',
 
-    mediator.sub('color selected', fill);
+    initialize: function () {
+        mediator.sub('color selected', this.fill.bind(this));
+    },
 
-    this.render = function () {
-        return el
-    };
+    render: function () {
+        return this;
+    },
 
-    function fill (color) {
-        el.className = color;
+    fill: function (color) {
+        this.el.className = color;
     }
-}
+});

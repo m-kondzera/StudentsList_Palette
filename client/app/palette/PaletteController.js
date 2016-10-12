@@ -7,7 +7,7 @@ function PaletteController () {
 		
     colorsContainer.on('inited', createList);
 
-    filled.appendChild(filledView.render());
+    filled.appendChild(filledView.render().el);
 
     function createList () {
         paletteView = new PaletteView(colorsContainer);
