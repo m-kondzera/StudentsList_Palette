@@ -1,14 +1,16 @@
-function PaletteView (colorsCollection) {
-    this.render = function () {
-        var fragment = document.createDocumentFragment(),
-            oneButton;
+var PaletteView = Backbone.View.extend({
+    initialize: function () {
+        this.collection.on('add', this.addButtons, this);
+    },
 
-        colorsCollection.forEach(function (color) {
-            oneButton = new OneButtonView({model: color});
+    render: function () {
+        this.collection.forEach(this.addButtons, this);
 
-            fragment.appendChild(oneButton.render().el);
-        });
+        return this;
+    },
 
-        return fragment;
-    };
-}
+    addButtons: function (color) {
+        oneButton = new OneButtonView({model: color});
+        this.el.appendChild(oneButton.render().el);
+    }
+});

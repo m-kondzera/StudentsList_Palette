@@ -1,20 +1,21 @@
-function StatisticsView (colorsCollection) {
-    var el = document.createElement('div');
+var StatisticsView = Backbone.View.extend({
+    tagName: 'div',
 
-    this.render = function () {
-        var fragment = document.createDocumentFragment(),
-            oneStatistic;
+    initialize: function () {
+        this.collection.on('add', this.addStatistics, this);
+    },
 
-        el.innerHTML = '<h2>Statistics:</h2>';
+    render: function () {
+        this.el.innerHTML = '<h2>Statistics:</h2>';
 
-        colorsCollection.forEach(function (color) {
-            oneStatistic = new OneStatisticsView({model: color});
+        this.collection.forEach(this.addStatistics, this);
 
-            fragment.appendChild(oneStatistic.render().el);
-        });
-        
-        el.appendChild(fragment);
+        return this;
+    },
 
-        return el;
-    };
-}
+    addStatistics: function (color) {
+        oneStatistic = new OneStatisticsView({model: color});
+
+        this.el.appendChild(oneStatistic.render().el);
+    }
+});

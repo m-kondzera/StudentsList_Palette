@@ -7,6 +7,5 @@ var ColorsContainer = Backbone.Collection.extend({
 
     initColors: function (response) {
         this.add(response);
-        this.trigger('inited');
     }
 });
