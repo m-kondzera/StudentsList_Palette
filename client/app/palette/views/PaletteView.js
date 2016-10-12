@@ -4,9 +4,9 @@ function PaletteView (colorsCollection) {
             oneButton;
 
         colorsCollection.forEach(function (color) {
-            oneButton = new OneButtonView(color);
+            oneButton = new OneButtonView({model: color});
 
-            fragment.appendChild(oneButton.render());
+            fragment.appendChild(oneButton.render().el);
         });
 
         return fragment;

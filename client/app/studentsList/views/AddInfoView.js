@@ -1,6 +1,5 @@
 function AddInfoView () {
     var info = document.createElement('div'),
-        observer = new PubSub(),
         newLastName, newName,
         newGender, newSkype,
         btn;

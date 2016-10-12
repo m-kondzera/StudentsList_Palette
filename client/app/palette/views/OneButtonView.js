@@ -1,18 +1,23 @@
-function OneButtonView (color) {
-    var el = document.createElement('button');
+var OneButtonView = Backbone.View.extend({
+    tagName: 'button',
+    className: 'btn-color',
 
-    this.render = function () {
-        el.classList.add('btn-color', color.get('color'));
-        el.innerHTML = color.get('color').toUpperCase();
+    events: {
+        'click': 'sendColor'
+    },
 
-        el.addEventListener('click', postColor, false);
+    render: function () {
+        var color = this.model.get('color');
 
-        return el;
-    };
+        this.el.innerHTML = color.toUpperCase();
+        this.el.classList.add(color);
 
-	function postColor () {
-		mediator.pub('color selected', color.get('color'));
+        return this;
+    },
 
-        color.increaseCounter();
-	}
-}
+    sendColor: function () {
+        mediator.pub('color selected', this.model.get('color'));
+
+        this.model.increaseCounter();
+    }
+});
