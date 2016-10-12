@@ -4,9 +4,9 @@ function StudentsListView (studentsCollection) {
             oneStudent;
 
         studentsCollection.forEach(function (student) {;
-            oneStudent = new OneStudentView(student);
+            oneStudent = new OneStudentView({model: student});
 
-            fragment.appendChild(oneStudent.render());
+            fragment.appendChild(oneStudent.render().el);
         });
 
         return fragment;
