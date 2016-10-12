@@ -1,15 +1,13 @@
-function OneStatisticsView (color) {
-    var el = document.createElement('p');
+var OneStatisticsView = Backbone.View.extend({
+    tagName: 'p',
 
-    color.on('change:counter', refreshStatistics);
+    initialize: function () {
+        this.model.on('change:counter', this.render, this);
+    },
 
-    this.render = function () {
-        refreshStatistics();
+    render: function () {
+        this.el.innerHTML = statTpl.replacer(statTpl.addStat, this.model.toJSON());
 
-        return el;
-    };
-
-    function refreshStatistics () {
-        el.innerHTML = statTpl.replacer(statTpl.addStat, color.toJSON());
+        return this;
     }
-}
+});

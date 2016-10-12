@@ -8,10 +8,11 @@ function StatisticsView (colorsCollection) {
         el.innerHTML = '<h2>Statistics:</h2>';
 
         colorsCollection.forEach(function (color) {
-            oneStatistic = new OneStatisticsView(color);
+            oneStatistic = new OneStatisticsView({model: color});
 
-            fragment.appendChild(oneStatistic.render());
+            fragment.appendChild(oneStatistic.render().el);
         });
+        
         el.appendChild(fragment);
 
         return el;
