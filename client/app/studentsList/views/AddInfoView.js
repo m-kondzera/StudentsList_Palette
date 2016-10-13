@@ -1,57 +1,43 @@
 function AddInfoView () {
-    var info = document.createElement('div'),
-        newLastName, newName,
-        newGender, newSkype,
-        btn;
+    var el = document.createElement('div');
 
     mediator.sub('student clicked', showDetails);
 
     this.render = function () {
-        return info;
+        return el;
     };
 
     function showDetails (student) {
         if (student !== 'delete') {
             addInfo();
         } else {
-            while (info.firstChild) {
-                info.removeChild(info.lastChild);
+            while (el.firstChild) {
+                el.removeChild(el.lastChild);
             }
         }
 
         function addInfo () {
-            info.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
+            el.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
 
-            btn = document.createElement('button');
-            btn.classList.add('btn', 'btn-edit');
-            btn.innerHTML = 'Edit';
-            info.appendChild(btn);
-
-            btn.addEventListener('click', editInfo, false);
+            el.querySelector('.btn').addEventListener('click', editInfo, false);
         }
 
         function editInfo () {
-            info.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
+            el.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
 
-            btn = document.createElement('button');
-            btn.classList.remove('btn-edit');
-            btn.classList.add('btn', 'btn-save');
-            btn.innerHTML = 'Save';
-            info.appendChild(btn);
-
-            btn.addEventListener('click', saveInfo, false);
+            el.querySelector('.btn').addEventListener('click', saveInfo, false);
         }
 
         function saveInfo () {
-            newLastName = document.getElementsByName('lastName')[0];
-            newName = document.getElementsByName('name')[0];
-            newGender = document.getElementsByName('gender')[0];
-            newSkype = document.getElementsByName('skype')[0];
+            var lastName = document.getElementsByName('lastName')[0].value,
+                name = document.getElementsByName('name')[0].value,
+                gender = document.getElementsByName('gender')[0].value,
+                skype = document.getElementsByName('skype')[0].value;
 
-            student.set('lastName', newLastName.value);
-            student.set('name', newName.value);
-            student.set('gender', newGender.value);
-            student.set('skype', newSkype.value);
+            student.set('lastName', lastName);
+            student.set('name', name);
+            student.set('gender', gender);
+            student.set('skype', skype);
 
             addInfo();
         }
