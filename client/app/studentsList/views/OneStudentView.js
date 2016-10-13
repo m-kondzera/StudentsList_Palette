@@ -26,7 +26,5 @@ var OneStudentView = Backbone.View.extend({
 
         this.remove();
         this.model.destroy();
-
-        mediator.pub('student clicked', 'delete');
     }
 });

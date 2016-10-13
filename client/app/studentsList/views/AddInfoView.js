@@ -1,45 +1,43 @@
-function AddInfoView () {
-    var el = document.createElement('div');
+var AddInfoView = Backbone.View.extend({
+    tagName: 'div',
 
-    mediator.sub('student clicked', showDetails);
+    initialize: function () {
+        mediator.sub('student clicked', this.showDetails.bind(this));
+    },
 
-    this.render = function () {
-        return el;
-    };
+    render: function () {
+        return this;
+    },
 
-    function showDetails (student) {
-        if (student !== 'delete') {
-            addInfo();
-        } else {
-            while (el.firstChild) {
-                el.removeChild(el.lastChild);
-            }
-        }
+    showDetails: function (student) {
+        this.addInfo(student);
+        
+        student.on('destroy', this.remove, this);
+    },
 
-        function addInfo () {
-            el.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
+    addInfo: function (student) {        
+        this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
 
-            el.querySelector('.btn').addEventListener('click', editInfo, false);
-        }
+        this.el.querySelector('.btn').addEventListener('click', this.editInfo.bind(this, student), false);
+    },
 
-        function editInfo () {
-            el.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
+    editInfo: function (student) {
+        this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
 
-            el.querySelector('.btn').addEventListener('click', saveInfo, false);
-        }
+        this.el.querySelector('.btn').addEventListener('click', this.saveInfo.bind(this, student), false);
+    },
 
-        function saveInfo () {
-            var lastName = document.getElementsByName('lastName')[0].value,
-                name = document.getElementsByName('name')[0].value,
-                gender = document.getElementsByName('gender')[0].value,
-                skype = document.getElementsByName('skype')[0].value;
+    saveInfo: function (student) {
+        var lastName = document.getElementsByName('lastName')[0].value,
+            name = document.getElementsByName('name')[0].value,
+            gender = document.getElementsByName('gender')[0].value,
+            skype = document.getElementsByName('skype')[0].value;
 
-            student.set('lastName', lastName);
-            student.set('name', name);
-            student.set('gender', gender);
-            student.set('skype', skype);
+        student.set('lastName', lastName);
+        student.set('name', name);
+        student.set('gender', gender);
+        student.set('skype', skype);
 
-            addInfo();
-        }
+        this.addInfo(student);
     }
-}
+});
