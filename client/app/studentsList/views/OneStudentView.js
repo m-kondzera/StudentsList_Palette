@@ -3,7 +3,7 @@ var OneStudentView = Backbone.View.extend({
 
     events: {
         'click': 'showDetails',
-        'click .delBtn': 'deleteStudent'
+        'click .delBtn': 'remove'
     },
 
     initialize: function () {
@@ -20,10 +20,10 @@ var OneStudentView = Backbone.View.extend({
         mediator.pub('student clicked', this.model);
     },
 
-    deleteStudent: function (e) {
+    remove: function (e) {
         e.stopPropagation();
 
-        this.el.remove();
+        this.$el.remove();
         this.model.destroy();
     }
 });
