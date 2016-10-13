@@ -11,27 +11,29 @@ var AddInfoView = Backbone.View.extend({
 
     showDetails: function (student) {
         this.addInfo(student);
-        
-        student.on('destroy', this.remove, this);
+
+        student.on('destroy', this.removed, this);
     },
 
     addInfo: function (student) {        
         this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
 
-        this.el.querySelector('.btn').addEventListener('click', this.editInfo.bind(this, student), false);
+        this.$el.find('.btn').click($.proxy(this.editInfo, this, student));
+        //this.el.querySelector('.btn').addEventListener('click', this.editInfo.bind(this, student), false);
     },
 
     editInfo: function (student) {
         this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
 
-        this.el.querySelector('.btn').addEventListener('click', this.saveInfo.bind(this, student), false);
+        this.$el.find('.btn').click($.proxy(this.saveInfo, this, student));
+        //this.el.querySelector('.btn').addEventListener('click', this.saveInfo.bind(this, student), false);
     },
 
     saveInfo: function (student) {
-        var lastName = document.getElementsByName('lastName')[0].value,
-            name = document.getElementsByName('name')[0].value,
-            gender = document.getElementsByName('gender')[0].value,
-            skype = document.getElementsByName('skype')[0].value;
+        var lastName = $('input[name="lastName"]').val(),
+            name = $('input[name="name"]').val(),
+            gender = $('input[name="gender"]').val(),
+            skype = $('input[name="skype"]').val();
 
         student.set('lastName', lastName);
         student.set('name', name);
@@ -39,5 +41,11 @@ var AddInfoView = Backbone.View.extend({
         student.set('skype', skype);
 
         this.addInfo(student);
+    },
+
+    removed: function () {
+        while(this.el.firstChild) {
+            this.el.removeChild(this.el.lastChild);
+        }
     }
 });

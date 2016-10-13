@@ -12,6 +12,6 @@ var StudentsListView = Backbone.View.extend({
     addStudents: function (student) {
         oneStudent = new OneStudentView({model: student});
 
-        this.el.appendChild(oneStudent.render().el);
+        this.$el.append(oneStudent.render().el);
     }
 });

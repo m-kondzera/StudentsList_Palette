@@ -11,8 +11,7 @@ var OneStudentView = Backbone.View.extend({
     },
 
     render: function () {
-        var attributes = this.model.toJSON();
-        this.el.innerHTML = oneStudentTpl.replacer(oneStudentTpl.oneStudent, attributes);
+        this.$el.html(oneStudentTpl.replacer(oneStudentTpl.oneStudent, this.model.toJSON()));
         
         return this;
     },
@@ -24,7 +23,7 @@ var OneStudentView = Backbone.View.extend({
     deleteStudent: function (e) {
         e.stopPropagation();
 
-        this.remove();
+        this.el.remove();
         this.model.destroy();
     }
 });
