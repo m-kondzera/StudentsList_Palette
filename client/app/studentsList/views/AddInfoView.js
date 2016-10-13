@@ -16,14 +16,14 @@ var AddInfoView = Backbone.View.extend({
     },
 
     addInfo: function (student) {        
-        this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON());
+        this.$el.html(addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.editInfo, this, student));
         //this.el.querySelector('.btn').addEventListener('click', this.editInfo.bind(this, student), false);
     },
 
     editInfo: function (student) {
-        this.el.innerHTML = addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON());
+        this.$el.html(addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.saveInfo, this, student));
         //this.el.querySelector('.btn').addEventListener('click', this.saveInfo.bind(this, student), false);
@@ -45,7 +45,7 @@ var AddInfoView = Backbone.View.extend({
 
     removed: function () {
         while(this.el.firstChild) {
-            this.el.removeChild(this.el.lastChild);
+            this.$el.empty();
         }
     }
 });
