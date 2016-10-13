@@ -9,8 +9,8 @@ var OneButtonView = Backbone.View.extend({
     render: function () {
         var color = this.model.get('color');
 
-        this.el.innerHTML = color.toUpperCase();
-        this.el.classList.add(color);
+        this.$el.html(color.toUpperCase());
+        this.$el.addClass(color);
 
         return this;
     },

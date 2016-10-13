@@ -6,7 +6,7 @@ var StatisticsView = Backbone.View.extend({
     },
 
     render: function () {
-        this.el.innerHTML = '<h2>Statistics:</h2>';
+        this.$el.html('<h2>Statistics:</h2>');
 
         this.collection.forEach(this.addStatistics, this);
 
@@ -16,6 +16,6 @@ var StatisticsView = Backbone.View.extend({
     addStatistics: function (color) {
         oneStatistic = new OneStatisticsView({model: color});
 
-        this.el.appendChild(oneStatistic.render().el);
+        this.$el.append(oneStatistic.render().el);
     }
 });

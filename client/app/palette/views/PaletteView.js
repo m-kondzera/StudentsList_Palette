@@ -11,6 +11,6 @@ var PaletteView = Backbone.View.extend({
 
     addButtons: function (color) {
         oneButton = new OneButtonView({model: color});
-        this.el.appendChild(oneButton.render().el);
+        this.$el.append(oneButton.render().el);
     }
 });

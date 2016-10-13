@@ -6,7 +6,7 @@ var OneStatisticsView = Backbone.View.extend({
     },
 
     render: function () {
-        this.el.innerHTML = statTpl.replacer(statTpl.addStat, this.model.toJSON());
+        this.$el.html(statTpl.replacer(statTpl.addStat, this.model.toJSON()));
 
         return this;
     }
