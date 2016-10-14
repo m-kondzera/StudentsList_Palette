@@ -2,7 +2,7 @@ var StatisticsView = Backbone.View.extend({
     tagName: 'div',
 
     initialize: function () {
-        this.collection.on('add', this.addStatistics, this);
+        this.collection.on('sync', this.render, this);
     },
 
     render: function () {
