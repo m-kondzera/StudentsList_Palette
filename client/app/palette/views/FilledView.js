@@ -10,6 +10,6 @@ var FilledView = Backbone.View.extend({
     },
 
     fill: function (color) {
-        this.$el.addClass(color);
+        this.el.className = color;
     }
 });

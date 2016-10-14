@@ -1,11 +1,8 @@
 var StudentsContainer = Backbone.Collection.extend({
     model: Student,
+    url: '/getStudents',
 
     initialize: function () {
-        request.load('students', this.initStudents.bind(this));
-    },
-
-    initStudents: function (response) {
-        this.add(response);
+        this.fetch();
     }
 });
