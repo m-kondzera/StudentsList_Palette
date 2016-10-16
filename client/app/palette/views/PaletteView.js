@@ -1,11 +1,9 @@
 var PaletteView = Backbone.View.extend({
     initialize: function () {
-        this.collection.on('sync', this.render, this);
+        this.collection.on('sync', this.addAll, this);
     },
 
     render: function () {
-        this.collection.forEach(this.addButton, this);
-
         return this;
     },
 
@@ -13,5 +11,9 @@ var PaletteView = Backbone.View.extend({
         oneButton = new OneButtonView({model: color});
 
         this.$el.append(oneButton.render().el);
+    },
+
+    addAll: function () {
+        this.collection.forEach(this.addButton, this);
     }
 });

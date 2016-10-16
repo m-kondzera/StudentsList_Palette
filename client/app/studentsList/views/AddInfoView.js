@@ -19,14 +19,12 @@ var AddInfoView = Backbone.View.extend({
         this.$el.html(addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.editInfo, this, student));
-        //this.el.querySelector('.btn').addEventListener('click', this.editInfo.bind(this, student), false);
     },
 
     editInfo: function (student) {
         this.$el.html(addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.saveInfo, this, student));
-        //this.el.querySelector('.btn').addEventListener('click', this.saveInfo.bind(this, student), false);
     },
 
     saveInfo: function (student) {
