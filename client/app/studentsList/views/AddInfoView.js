@@ -16,13 +16,13 @@ var AddInfoView = Backbone.View.extend({
     },
 
     addInfo: function (student) {        
-        this.$el.html(addInfoTpl.replacer(addInfoTpl.infoTpl, student.toJSON()));
+        this.$el.html(tpl.replacer(tpl.infoTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.editInfo, this, student));
     },
 
     editInfo: function (student) {
-        this.$el.html(addInfoTpl.replacer(addInfoTpl.editTpl, student.toJSON()));
+        this.$el.html(tpl.replacer(tpl.editTpl, student.toJSON()));
 
         this.$el.find('.btn').click($.proxy(this.saveInfo, this, student));
     },

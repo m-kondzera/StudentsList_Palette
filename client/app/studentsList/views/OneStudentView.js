@@ -11,7 +11,8 @@ var OneStudentView = Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(oneStudentTpl.replacer(oneStudentTpl.oneStudent, this.model.toJSON()));
+        var attributes = this.model.toJSON();
+        this.$el.html(tpl.replacer(tpl.oneStudent, attributes));
         
         return this;
     },
