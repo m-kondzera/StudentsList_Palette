@@ -5,44 +5,44 @@ var AddInfoView = Backbone.View.extend({
         mediator.sub('student clicked', this.showDetails.bind(this));
     },
 
+    events: {
+        'click .btn-edit': 'editInfo',
+        'click .btn-save': 'saveInfo'
+    },
+
     render: function () {
         return this;
     },
 
     showDetails: function (student) {
-        this.addInfo(student);
+        this.student = student;
+        this.addInfo();
 
-        student.on('destroy', this.removed, this);
+        this.student.on('destroy', this.clear, this);
     },
 
-    addInfo: function (student) {        
-        this.$el.html(tpl.replacer(tpl.infoTpl, student.toJSON()));
-
-        this.$el.find('.btn').click($.proxy(this.editInfo, this, student));
+    addInfo: function () {        
+        this.$el.html(tpl.replacer(tpl.infoTpl, this.student.toJSON()));
     },
 
-    editInfo: function (student) {
-        this.$el.html(tpl.replacer(tpl.editTpl, student.toJSON()));
-
-        this.$el.find('.btn').click($.proxy(this.saveInfo, this, student));
+    editInfo: function () {
+        this.$el.html(tpl.replacer(tpl.editTpl, this.student.toJSON()));
     },
 
-    saveInfo: function (student) {
+    saveInfo: function () {
         var lastName = $('input[name="lastName"]').val(),
             name = $('input[name="name"]').val(),
             gender = $('input[name="gender"]').val(),
             skype = $('input[name="skype"]').val();
 
-        student.set('lastName', lastName);
-        student.set('name', name);
-        student.set('gender', gender);
-        student.set('skype', skype);
+        this.student.set({'lastName': lastName, 'name': name});
+        this.student.set({'gender': gender, 'skype': skype});
 
-        this.addInfo(student);
+        this.addInfo();
     },
 
-    removed: function () {
-        while(this.el.firstChild) {
+    clear: function () {
+        if(this.el.firstChild) {
             this.$el.empty();
         }
     }
