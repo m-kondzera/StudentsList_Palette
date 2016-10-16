@@ -42,7 +42,7 @@ var AddInfoView = Backbone.View.extend({
     },
 
     clear: function () {
-        if(this.el.firstChild) {
+        if(this.$el.length) {
             this.$el.empty();
         }
     }
