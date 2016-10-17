@@ -1,4 +1,4 @@
-var AddInfoView = Backbone.View.extend({
+var ShowDetailsView = Backbone.View.extend({
     tagName: 'div',
 
     initialize: function () {
@@ -18,7 +18,7 @@ var AddInfoView = Backbone.View.extend({
         this.student = student;
         this.addInfo();
 
-        this.student.on('destroy', this.clear, this);
+        this.listenTo(this.student, 'destroy', this.clear);
     },
 
     addInfo: function () {        
@@ -35,15 +35,17 @@ var AddInfoView = Backbone.View.extend({
             gender = $('input[name="gender"]').val(),
             skype = $('input[name="skype"]').val();
 
-        this.student.set({'lastName': lastName, 'name': name});
-        this.student.set({'gender': gender, 'skype': skype});
+        this.student.set({
+                'lastName': lastName, 
+                'name': name,
+                'gender': gender,
+                'skype': skype
+            }, {validate: true});
 
         this.addInfo();
     },
 
     clear: function () {
-        if(this.$el.length) {
-            this.$el.empty();
-        }
+        this.$el.empty();
     }
 });

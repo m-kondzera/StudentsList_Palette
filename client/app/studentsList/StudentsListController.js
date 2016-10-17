@@ -1,7 +1,7 @@
 function StudentsListController () {
     var studentsContainer = new StudentsContainer(),
         studentsListView = new StudentsListView({collection: studentsContainer}),
-        addInfoView = new AddInfoView();
+        addInfoView = new ShowDetailsView();
 
     $('.studentsList').append(studentsListView.render().el);
     $('.info').append(addInfoView.render().el);

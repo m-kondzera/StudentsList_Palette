@@ -7,15 +7,13 @@ var OneStudentView = Backbone.View.extend({
     },
 
     initialize: function () {
-        this.model.on('change', this.render, this);
-        this.model.on('destroy', this.remove, this);
+        this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'destroy', this.remove);
     },
 
     render: function () {
-        var attributes = this.model.toJSON();
+        this.$el.html(tpl.replacer(tpl.oneStudent, this.model.toJSON()));
 
-        this.$el.html(tpl.replacer(tpl.oneStudent, attributes));
-        
         return this;
     },
 
@@ -27,9 +25,5 @@ var OneStudentView = Backbone.View.extend({
         e.stopPropagation();
 
         this.model.destroy();
-    },
-
-    remove: function () {
-        this.$el.remove();
     }
 });

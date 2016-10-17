@@ -1,7 +1,7 @@
 function PaletteController () {
-	var colorsContainer = new ColorsContainer(),
+    var colorsContainer = new ColorsContainer(),
         paletteView = new PaletteView({collection: colorsContainer}),
-		filledView = new FilledView(),
+        filledView = new FilledView(),
         statisticsView = new StatisticsView({collection: colorsContainer});
 
     $('.colors').append(paletteView.render().el);

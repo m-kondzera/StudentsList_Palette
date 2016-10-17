@@ -3,6 +3,6 @@ var Color = Backbone.Model.extend({
         var counter = this.get('counter');
 
         counter++;
-        this.set('counter', counter.toString());
+        this.set('counter', counter);
     }
 });

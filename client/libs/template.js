@@ -6,4 +6,4 @@ tpl.replacer = function (str, obj) {
     }
 
     return str;
-}
+};

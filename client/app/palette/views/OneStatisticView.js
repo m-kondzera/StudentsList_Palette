@@ -2,7 +2,7 @@ var OneStatisticsView = Backbone.View.extend({
     tagName: 'p',
 
     initialize: function () {
-        this.model.on('change:counter', this.render, this);
+        this.listenTo(this.model, 'change:counter', this.render);
     },
 
     render: function () {
