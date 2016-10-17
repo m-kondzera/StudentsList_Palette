@@ -1,1 +1,1 @@
-var mediator = new PubSub();
+var mediator = _.extend({}, Backbone.Events);

@@ -16,7 +16,7 @@ var OneButtonView = Backbone.View.extend({
     },
 
     sendColor: function () {
-        mediator.pub('color selected', this.model.get('color'));
+        mediator.trigger('color selected', this.model.get('color'));
 
         this.model.increaseCounter();
     }

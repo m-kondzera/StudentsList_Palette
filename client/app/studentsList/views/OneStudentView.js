@@ -3,28 +3,33 @@ var OneStudentView = Backbone.View.extend({
 
     events: {
         'click': 'showDetails',
-        'click .delBtn': 'remove'
+        'click .delBtn': 'delete'
     },
 
     initialize: function () {
         this.model.on('change', this.render, this);
+        this.model.on('destroy', this.remove, this);
     },
 
     render: function () {
         var attributes = this.model.toJSON();
+
         this.$el.html(tpl.replacer(tpl.oneStudent, attributes));
         
         return this;
     },
 
     showDetails: function () {
-        mediator.pub('student clicked', this.model);
+        mediator.trigger('student clicked', this.model);
     },
 
-    remove: function (e) {
+    delete: function (e) {
         e.stopPropagation();
 
-        this.$el.remove();
         this.model.destroy();
+    },
+
+    remove: function () {
+        this.$el.remove();
     }
 });

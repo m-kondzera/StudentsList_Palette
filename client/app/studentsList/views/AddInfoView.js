@@ -2,7 +2,7 @@ var AddInfoView = Backbone.View.extend({
     tagName: 'div',
 
     initialize: function () {
-        mediator.sub('student clicked', this.showDetails.bind(this));
+        mediator.on('student clicked', this.showDetails, this);
     },
 
     events: {
