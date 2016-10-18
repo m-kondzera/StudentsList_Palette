@@ -4,8 +4,6 @@ var StudentsListView = Backbone.View.extend({
     },
 
     render: function () {
-        this.addAll();
-        
         return this;
     },
 

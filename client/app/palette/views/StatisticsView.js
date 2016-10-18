@@ -7,7 +7,6 @@ var StatisticsView = Backbone.View.extend({
 
     render: function () {
         this.$el.html('<h2>Statistics:</h2>');
-        this.addAll();
 
         return this;
     },
