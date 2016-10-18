@@ -1,23 +1,19 @@
+'use strict';
 var OneButtonView = Backbone.View.extend({
-    tagName: 'button',
-    className: 'btn-color',
+    tagName: 'span',
 
     events: {
         'click': 'sendColor'
     },
 
     render: function () {
-        var color = this.model.get('color');
-
-        this.$el.html(color.toUpperCase());
-        this.$el.addClass(color);
+        this.$el.html(tpl.replacer(tpl.oneButton, this.model.toJSON()));
 
         return this;
     },
 
     sendColor: function () {
-        mediator.trigger('color selected', this.model.get('color'));
-
+        mediator.pub('color selected', this.model.get('color'));
         this.model.increaseCounter();
     }
 });

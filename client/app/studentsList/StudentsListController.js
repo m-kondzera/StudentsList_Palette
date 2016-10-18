@@ -1,3 +1,4 @@
+'use strict';
 function StudentsListController () {
     var studentsContainer = new StudentsContainer(),
         studentsListView = new StudentsListView({collection: studentsContainer}),

@@ -1,7 +1,5 @@
 'use strict';
-document.addEventListener('DOMContentLoaded', init, false);
-
-function init () {
+$(function () {
     var paletteController = new PaletteController(),
         studentsListController = new StudentsListController();
-}
+});

@@ -1,8 +1,9 @@
+'use strict';
 var FilledView = Backbone.View.extend({
     tagName: 'div',
 
     initialize: function () {
-        mediator.on('color selected', this.fill, this);
+        mediator.sub('color selected', this.fill.bind(this));
     },
 
     render: function () {
@@ -10,6 +11,6 @@ var FilledView = Backbone.View.extend({
     },
 
     fill: function (color) {
-        this.el.className = color;
+        this.$el.attr('class', color);
     }
 });

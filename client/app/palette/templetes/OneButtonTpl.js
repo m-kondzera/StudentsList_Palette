@@ -1,0 +1,1 @@
+tpl.oneButton = '<button class=":color btn-color">:color</button>'

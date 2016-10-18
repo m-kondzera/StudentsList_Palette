@@ -1,8 +1,9 @@
+'use strict';
 var StatisticsView = Backbone.View.extend({
     tagName: 'div',
 
     initialize: function () {
-        this.collection.on('sync', this.addAll, this);
+        this.collection.on('add', this.addOne, this);
     },
 
     render: function () {
@@ -11,13 +12,8 @@ var StatisticsView = Backbone.View.extend({
         return this;
     },
 
-    addStatistics: function (color) {
-        oneStatistic = new OneStatisticsView({model: color});
-
-        this.$el.append(oneStatistic.render().el);
-    },
-
-    addAll: function () {
-        this.collection.forEach(this.addStatistics, this);
+    addOne: function (color) {
+        var view = new OneStatisticsView({model: color});
+        this.$el.append(view.render().el);
     }
 });

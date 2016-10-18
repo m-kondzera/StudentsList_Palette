@@ -1,3 +1,4 @@
+'use strict';
 var OneStatisticsView = Backbone.View.extend({
     tagName: 'p',
 
@@ -6,7 +7,7 @@ var OneStatisticsView = Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(tpl.replacer(tpl.oneStat, this.model.toJSON()));
+        this.$el.html(tpl.replacer(tpl.oneStatistic, this.model.toJSON()));
 
         return this;
     }

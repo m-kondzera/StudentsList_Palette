@@ -1,3 +1,4 @@
+'use strict';
 function PaletteController () {
     var colorsContainer = new ColorsContainer(),
         paletteView = new PaletteView({collection: colorsContainer}),

@@ -1,1 +1,0 @@
-tpl.oneStat = `:color: :counter`;

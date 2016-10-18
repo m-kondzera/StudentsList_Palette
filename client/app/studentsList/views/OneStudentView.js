@@ -1,3 +1,4 @@
+'use strict';
 var OneStudentView = Backbone.View.extend({
     tagName: 'li',
 
@@ -18,12 +19,11 @@ var OneStudentView = Backbone.View.extend({
     },
 
     showDetails: function () {
-        mediator.trigger('student clicked', this.model);
+        mediator.pub('student clicked', this.model);
     },
 
     delete: function (e) {
         e.stopPropagation();
-
         this.model.destroy();
     }
 });
