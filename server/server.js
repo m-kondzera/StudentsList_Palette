@@ -17,7 +17,8 @@ function onRequest (request, response) {
     }
 
     if (pathname.indexOf('.css') != -1 || pathname.indexOf('.js') != -1 
-    || pathname.indexOf('.html') != -1 || pathname.indexOf('.json') != -1) {
+    || pathname.indexOf('.html') != -1 || pathname.indexOf('.json') != -1
+    || pathname.indexOf('.gif')) {
         requestHandlers.addFile(pathname, response, contentType);
     }
 }

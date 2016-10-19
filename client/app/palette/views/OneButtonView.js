@@ -3,7 +3,7 @@ var OneButtonView = Backbone.View.extend({
     tagName: 'span',
 
     events: {
-        'click': 'sendColor'
+        'click': 'addColor'
     },
 
     render: function () {
@@ -12,7 +12,7 @@ var OneButtonView = Backbone.View.extend({
         return this;
     },
 
-    sendColor: function () {
+    addColor: function () {
         mediator.pub('color selected', this.model.get('color'));
         this.model.increaseCounter();
     }
