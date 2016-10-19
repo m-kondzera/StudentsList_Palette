@@ -31,17 +31,14 @@ var ShowDetailsView = Backbone.View.extend({
     },
 
     saveInfo: function () {
-        var lastName = this.$el.find('[name="lastName"]').val(),
-            name = this.$el.find('[name="name"]').val(),
-            gender = this.$el.find('[name="gender"]').val(),
-            skype = this.$el.find('[name="skype"]').val();
+        var studentInfo = {
+            lastName: this.$('[name="lastName"]').val(),
+            name: this.$('[name="name"]').val(),
+            gender: this.$('[name="gender"]').val(),
+            skype: this.$('[name="skype"]').val()
+        };
 
-        this.student.set({
-            'lastName': lastName, 
-            'name': name,
-            'gender': gender,
-            'skype': skype
-        }, {validate: true});
+        this.student.set(studentInfo, {validate: true});
 
         this.addInfo();
     },
