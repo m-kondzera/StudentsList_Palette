@@ -15,6 +15,8 @@ function StudentsListController () {
     }
 
     function start () {
-        callback();
+        if (callback) {
+            callback();
+        }
     }
 }
