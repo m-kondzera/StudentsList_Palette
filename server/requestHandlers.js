@@ -4,12 +4,12 @@ var fs = require('fs'),
 
 function addFile(pathname, response, contentType) {
     fs.readFile(baseRoot + pathname, function (err, data) {
-            if (err) {
-                response.end("File wasn't found");
-            }
-
-            response.writeHead(200, {"Content-Type": contentType});
-            response.end(data);
+        if (err) {
+            console.log('error ' + pathname + ' is not found');
+            response.end(err);
+        }
+        response.writeHead(200, {"Content-Type": contentType});
+        response.end(data);
     });
 }
 
@@ -22,14 +22,7 @@ function getContentType (pathname) {
             '.json': 'application/json',
             '.png': 'image/png',
             '.jpg': 'image/jpg',
-            '.gif': 'image/gif',
-            '.wav': 'audio/wav',
-            '.mp4': 'video/mp4',
-            '.woff': 'application/font-woff',
-            '.ttf': 'applilcation/font-ttf',
-            '.eot': 'application/vnd.ms-fontobject',
-            '.otf': 'application/font-otf',
-            '.svg': 'application/image/svg+xml'
+            '.gif': 'image/gif'
         };
 
     return mimeTypes[extname];

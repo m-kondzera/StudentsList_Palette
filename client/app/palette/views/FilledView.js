@@ -4,6 +4,7 @@ var FilledView = Backbone.View.extend({
 
     initialize: function () {
         mediator.sub('color selected', this.fill.bind(this));
+        mediator.sub('color inited', this.fill.bind(this));
     },
 
     render: function () {

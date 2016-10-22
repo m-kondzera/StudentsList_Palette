@@ -10,6 +10,7 @@ var OneStudentView = Backbone.View.extend({
     initialize: function () {
         this.listenTo(this.model, 'change', this.render);
         this.listenTo(this.model, 'destroy', this.remove);
+        mediator.sub(this.model.get('name') + ' inited', this.showDetails.bind(this));
     },
 
     render: function () {

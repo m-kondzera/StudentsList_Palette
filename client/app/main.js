@@ -1,5 +1,6 @@
 'use strict';
+var router = new Router();
+
 $(function () {
-    var paletteController = new PaletteController(),
-        studentsListController = new StudentsListController();
+    Backbone.history.start({pushState: true});
 });

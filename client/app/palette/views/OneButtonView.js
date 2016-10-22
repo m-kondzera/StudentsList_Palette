@@ -8,7 +8,6 @@ var OneButtonView = Backbone.View.extend({
 
     render: function () {
         this.$el.html(tpl.replacer(tpl.oneButton, this.model.toJSON()));
-
         return this;
     },
 
