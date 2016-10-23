@@ -3,7 +3,7 @@ var Router = Backbone.Router.extend({
         '': 'main',
         'colors/:color': 'initColor',
         'students/:name': 'initStudent',
-        ':errorPage': 'errorMsg'
+        '*errorPage': 'errorMessage'
     },
 
     initialize: function () {
@@ -36,7 +36,7 @@ var Router = Backbone.Router.extend({
         this.router.navigate('students/' + student.get('name'));
     },
 
-    errorMsg: function (msg) {
-        console.log('404 Not found ' + msg);
+    errorMessage: function (msg) {
+        $(document.body).html('The page <strong>' + msg + '</strong> is not exist.');
     }
 });

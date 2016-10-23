@@ -7,7 +7,7 @@ function onRequest (request, response) {
     var pathname = url.parse(request.url).pathname,
         contentType;
 
-    if (pathname === '') {
+    if (pathname === '/') {
         pathname = '/index.html';
     }
     if (pathname === '/getStudents') {
