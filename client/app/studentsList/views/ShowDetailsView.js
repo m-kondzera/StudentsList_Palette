@@ -2,13 +2,13 @@
 var ShowDetailsView = Backbone.View.extend({
     tagName: 'div',
 
-    initialize: function () {
-        mediator.sub('student clicked', this.showDetails.bind(this));
-    },
-
     events: {
         'click .btn-edit': 'editInfo',
         'click .btn-save': 'saveInfo'
+    },
+
+    initialize: function () {
+        mediator.sub('student clicked', this.showDetails.bind(this));
     },
 
     render: function () {
@@ -28,6 +28,8 @@ var ShowDetailsView = Backbone.View.extend({
 
     editInfo: function () {
         this.$el.html(tpl.replacer(tpl.edit, this.student.toJSON()));
+
+        mediator.pub('student edited', this.student.get('name'));
     },
 
     saveInfo: function () {

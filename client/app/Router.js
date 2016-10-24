@@ -1,19 +1,31 @@
+'use strict';
 var Router = Backbone.Router.extend({
     routes: {
-        '': 'main',
+        '': 'index',
         'colors/:color': 'initColor',
         'students/:name': 'initStudent',
         '*errorPage': 'errorMessage'
     },
 
     initialize: function () {
-        mediator.sub('color selected', this.writeColor);
-        mediator.sub('student clicked', this.writeStudent);
+        mediator.sub('color selected', this.writeColor.bind(this));
+        mediator.sub('student clicked', this.writeStudent.bind(this));
+        mediator.sub('student edited', this.editStudent.bind(this));
     },
 
     main: function () {
-        this.paletteController = new PaletteController();
-        this.studentsListController = new StudentsListController();
+        this.palette = new PaletteController();
+        this.students = new StudentsListController();
+
+        this.palette.clear();
+        this.students.clear();
+
+        this.palette.load();
+        this.students.load();
+    },
+
+    index: function () {
+        this.main();
     },
 
     initColor: function (color) {
@@ -23,20 +35,26 @@ var Router = Backbone.Router.extend({
 
     initStudent: function (name) {
         this.main();
-        this.studentsListController.laterStart(function () {
+        this.students.laterStart(function () {
             mediator.pub(name + ' inited');
         });
     },
 
     writeColor: function (color) {
-        this.router.navigate('colors/' + color);
+        this.navigate('colors/' + color);
     },
 
     writeStudent: function (student) {
-        this.router.navigate('students/' + student.get('name'));
+        this.navigate('students/' + student.get('name'));
+    },
+
+    editStudent: function (student) {
+        this.navigate('students/' + student + '/edit');
     },
 
     errorMessage: function (msg) {
-        $(document.body).html('The page <strong>' + msg + '</strong> is not exist.');
+        this.main();
+        alert('The page ' + msg + ' is not exist.');
+        this.navigate('');
     }
 });

@@ -1,20 +1,34 @@
 'use strict';
 function StudentsListController () {
-    var studentsContainer = new StudentsContainer(),
-        studentsListView = new StudentsListView({collection: studentsContainer}),
-        addInfoView = new ShowDetailsView(),
+    var studentsList = $('.studentsList'),
+        info = $('.info'),
         callback;
 
-    studentsContainer.on('sync', start);
+    this.load = function () {
+        var studentsContainer = new StudentsContainer(),
+            studentsListView = new StudentsListView({collection: studentsContainer}),
+            addInfoView = new ShowDetailsView(),
+            promise = new Promise((resolve, reject) => {
+                studentsContainer.on('sync', resolve);
+            });
 
-    $('.studentsList').append(studentsListView.render().el);
-    $('.info').append(addInfoView.render().el);
+        promise.then(this.showStudentInfo);
+
+        $('.studentsList').append(studentsListView.render().el);
+        $('.info').append(addInfoView.render().el);
+    };
+
+    this.clear = function () {
+        $('.studentsList').empty();
+        $('.info').empty();
+    };
+    
 
     this.laterStart = function (_callback) {
         callback = _callback;
     }
 
-    function start () {
+    this.showStudentInfo = function () {
         if (callback) {
             callback();
         }
